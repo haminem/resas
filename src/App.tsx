@@ -1,7 +1,7 @@
-export default () => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
-};
+import React from "react";
+
+function App() {
+  return <div>Hello world</div>;
+}
+
+export default App;
