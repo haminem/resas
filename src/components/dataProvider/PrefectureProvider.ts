@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { Prefecture } from "@/types/Prefecture";
 import { Provider } from "@/types/utils/Provider";
 
-export type PrefectureProvider = {
+export type PrefectureProviderProps = {
   prefectures: Prefecture[];
 } & Provider;
 
-function PrefectureProvider(): PrefectureProvider {
+function PrefectureProvider(): PrefectureProviderProps {
   const [prefectures, setPrefectures] = useState<Prefecture[]>([]);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();

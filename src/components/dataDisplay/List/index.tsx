@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Prefecture } from "@/types/Prefecture";
-import { PrefectureProvider } from "@/components/dataProvider/PrefectureProvider";
+import { PrefectureProviderProps } from "@/components/dataProvider/PrefectureProvider";
 
 type ListProps = {
   title: string;
   //HACK: 汎化する際はdataProviderの型をジェネリクスで指定できるようにする
-  dataProvider: PrefectureProvider;
-  checkState: Dispatch<SetStateAction<string[]>>;
+  dataProvider: PrefectureProviderProps;
+  checkState: Dispatch<SetStateAction<Prefecture[]>>;
 };
 
 function List({ title, dataProvider, checkState }: ListProps) {
@@ -40,11 +40,11 @@ function List({ title, dataProvider, checkState }: ListProps) {
                   value={prefecture.prefName}
                   onChange={(e) => {
                     if (e.target.checked) {
-                      checkState((prev) => [...prev, e.target.value]);
+                      checkState((prev) => [...prev, prefecture]);
                     } else {
-                      checkState((prev) => {
-                        return prev.filter((pref) => pref !== e.target.value);
-                      });
+                      checkState((prev) =>
+                        prev.filter((p) => p.prefCode !== prefecture.prefCode)
+                      );
                     }
                   }}
                 />
