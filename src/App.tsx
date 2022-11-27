@@ -12,13 +12,14 @@ function App() {
 
   return (
     <>
+      <h1 style={{ textAlign: "center",backgroundColor: "lightGray" }}>総人口推移グラフ</h1>
       <List
         title="都道府県"
         dataProvider={PrefectureProvider()}
         checkState={setCheckedPrefectures}
       />
       <Chart
-        title="総人口推移グラフ"
+        title=""
         dataProvider={PopulationProvider(checkedPrefectures)}
       />
     </>
