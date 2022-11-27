@@ -6,7 +6,7 @@ type ListProps = {
   title: string;
   //HACK: 汎化する際はdataProviderの型をジェネリクスで指定できるようにする
   dataProvider: PrefectureProviderProps;
-  checkState: Dispatch<SetStateAction<string[]>>;
+  checkState: Dispatch<SetStateAction<Prefecture[]>>;
 };
 
 function List({ title, dataProvider, checkState }: ListProps) {
@@ -40,11 +40,11 @@ function List({ title, dataProvider, checkState }: ListProps) {
                   value={prefecture.prefName}
                   onChange={(e) => {
                     if (e.target.checked) {
-                      checkState((prev) => [...prev, e.target.value]);
+                      checkState((prev) => [...prev, prefecture]);
                     } else {
-                      checkState((prev) => {
-                        return prev.filter((pref) => pref !== e.target.value);
-                      });
+                      checkState((prev) =>
+                        prev.filter((p) => p.prefCode !== prefecture.prefCode)
+                      );
                     }
                   }}
                 />

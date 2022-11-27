@@ -3,11 +3,13 @@ import PrefectureProvider from "./components/dataProvider/PrefectureProvider";
 import PopulationProvider from "./components/dataProvider/PopulationProvider";
 import List from "./components/dataDisplay/List";
 import Chart from "./components/dataDisplay/Chart";
+import { Prefecture } from "./types/Prefecture";
 
 function App() {
-  const [checkedPrefectures, setCheckedPrefectures] = React.useState<string[]>(
-    []
-  );
+  const [checkedPrefectures, setCheckedPrefectures] = React.useState<
+    Prefecture[]
+  >([]);
+
   return (
     <>
       <List
