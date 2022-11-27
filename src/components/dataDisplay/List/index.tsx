@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Prefecture } from "@/types/Prefecture";
-import { PrefectureProvider } from "@/components/dataProvider/PrefectureProvider";
+import { PrefectureProviderProps } from "@/components/dataProvider/PrefectureProvider";
 
 type ListProps = {
   title: string;
   //HACK: 汎化する際はdataProviderの型をジェネリクスで指定できるようにする
-  dataProvider: PrefectureProvider;
+  dataProvider: PrefectureProviderProps;
   checkState: Dispatch<SetStateAction<string[]>>;
 };
 
