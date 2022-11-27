@@ -12,17 +12,28 @@ type ListProps = {
 function List({ title, dataProvider, checkState }: ListProps) {
   const { prefectures, isLoading, error } = dataProvider;
   return (
-    <div>
+    <>
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
         <div>Error</div>
       ) : (
-        <div>
-          <h1>{title}</h1>
-          <ul>
+        <div
+          style={{
+            margin: "2vh",
+          }}
+        >
+          <p>{title}</p>
+          <ul
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              margin: "0 3vw",
+            }}
+          >
             {prefectures.map((prefecture: Prefecture) => (
-              <li key={prefecture.prefCode}>
+              <li key={prefecture.prefCode} style={{ marginRight: "0.2em" }}>
                 <input
                   type="checkbox"
                   id={prefecture.prefName}
@@ -38,14 +49,14 @@ function List({ title, dataProvider, checkState }: ListProps) {
                   }}
                 />
                 <label htmlFor={prefecture.prefName}>
-                  {prefecture.prefName}
+                  <b>{prefecture.prefName}</b>
                 </label>
               </li>
             ))}
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
