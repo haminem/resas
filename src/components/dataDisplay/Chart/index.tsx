@@ -18,12 +18,19 @@ function Chart({ title, dataProvider }: ChartProps) {
     xAxis: {
       title: {
         text: "年度",
+        align: "high",
       },
     },
     yAxis: {
       title: {
         text: "人口数",
+        align: "high",
       },
+    },
+    legend: {
+      layout: "vertical",
+      align: "right",
+      verticalAlign: "middle",
     },
     plotOptions: {
       series: {
@@ -32,6 +39,23 @@ function Chart({ title, dataProvider }: ChartProps) {
       },
     },
     series: series,
+
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            legend: {
+              layout: "horizontal",
+              align: "center",
+              verticalAlign: "bottom",
+            },
+          },
+        },
+      ],
+    },
   };
 
   return (
